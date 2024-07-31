@@ -2,121 +2,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Ninja | <%= title %></title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-    *{
-      padding: 0;
-      margin: 0;
-      box-sizing: content-box;
-    }
-    body{
-      max-width: 1200px;
-      font-family: 'Noto Serif', serif;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-    a{
-      text-decoration: none;
-      color: #222;
-
-    }
-
-    /* nav & footer styles */
-    nav{
-      display: flex;
-      justify-content: space-between;
-      text-transform: uppercase;
-      border-bottom: 2px solid #ddd ;
-      padding-bottom: 10px;
-      margin-bottom: 60px;
-    }
-    nav h1{
-      font-size: 3em;
-      color:  #222;
-    }
-
-    nav ul{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    nav ul li{
-      list-style-type: none;
-      margin-left: 20px;
-
-    }
-
-   nav p, nav a{
-    color: #777;
-    font-weight: 300;
-   }
-
-   footer{
-    margin: 80px auto 20px;
-    text-align: center;
-    color: #777;
-    font-weight: 300;
-   }
-
-   h2{
-    margin-bottom: 40px;
-    }
-    h3{
-      text-transform: capitalize;
-      margin-bottom: 8px;
-    }
-
-    .content{
-      margin-left: 20px;
-    }
-    .create-blog form{
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .create-blog input,
-    .create-blog textarea{
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 8px;
-    }
-    .create-blog label{
-      display: block;
-      margin-top: 24px;
-    }
-    textarea{
-      height: 120px;
-    }
-    .create-blog button{
-      margin-top: 20px;
-      background: crimson;
-      color: white;
-      padding: 10px;
-      border: 0;
-      border-radius: 6px;
-      font-size: 1.2em;
-      cursor: pointer;
-    }
-    .blog-content{
-      width: min-content;
-      margin: 20px;
-      border: 1px solid crimson;
-      border-radius: 12px;
-      padding: 12px;
-      cursor: pointer;
-    }
-    .blog-content{
-      min-width: 25%;
-    display: inline-block;
-    margin: 20px;
-    border: 1px solid crimson;
-    border-radius: 12px;
-    padding: 12px;
-    cursor: pointer;
-    background-color: crimson;
-    color: #fff;
-    box-shadow: 3px 3px 3px hwb(0 0% 100% / 0.297);
-  }
-  </style>
+  <link rel="stylesheet" href="/style.css">
 </head>
+
+<!-- Les deux balises <link> que vous avez fournies sont utilisées pour lier une feuille de style CSS à un document HTML, mais elles se distinguent par le chemin spécifié dans l'attribut href.
+
+1. <link rel="stylesheet" href="/style.css">
+Chemin absolu relatif à la racine : Le chemin /style.css est un chemin absolu relatif à la racine du site web. Cela signifie que le fichier style.css est situé directement à la racine du serveur web.
+
+Comportement : Le navigateur cherchera le fichier style.css à partir de la racine de l'URL. Par exemple, si le site web est hébergé à https://www.example.com, le navigateur demandera https://www.example.com/style.css.
+
+2. <link rel="stylesheet" href="style.css">
+Chemin relatif : Le chemin style.css est relatif à l'emplacement du document HTML contenant cette balise <link>. Si ce document HTML se trouve dans un sous-répertoire, le navigateur cherchera le fichier CSS dans le même répertoire.
+
+Comportement : Le fichier style.css est recherché dans le même répertoire que le fichier HTML, ou dans un répertoire relatif au document HTML. Par exemple, si le document HTML est situé à https://www.example.com/about/, le navigateur demandera https://www.example.com/about/style.css. -->

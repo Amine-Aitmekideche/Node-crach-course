@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // intaliser l'app: L'objet app créé par express() dispose de plusieurs méthodes qui permettent de définir des routes, des middlewares, et de configurer divers aspects de l'application
 const app = express();
@@ -12,16 +13,31 @@ app.listen(3000,"localhost",()=>{
     console.log('lisning in port 3000 localhost')
 })
 
-const blogs = [
-    {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-  ]; 
+// Middleware and static files (img , css)
+app.use(express.static('public'))
+
+// app.use((req,res,next) => {
+//     console.log("New request made:")
+//     console.log("host:",req.hostname)
+//     console.log("path:",req.path)
+//     console.log("methode:",req.method)
+//     next()
+// })
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+
+app.use((req,res,next) => {
+    console.log("in the next middlware")
+    next();
+})
+
 
 app.get('/',(req,res)=>{
-    // res.send("<p> Hello Word!</p>")
-
-    //path must be absolute
+    const blogs = [
+        {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+        {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+      ]; 
     res.render('index', {title: 'Home', blogs})
 })
 
@@ -49,5 +65,12 @@ app.use((req,res)=>{
 })
 
 
-// Les view engines (moteurs de vue) en Express.js sont des outils qui permettent de générer des pages HTML dynamiques à partir de modèles. Un moteur de vue prend des données et un modèle, puis génère une page HTML finale. Cela est particulièrement utile pour créer des applications web où le contenu de la page peut changer dynamiquement en fonction des données de l'utilisateur ou du contexte.
-// res.render(view [, locals] [, callback]) est une méthode utilisée pour rendre des vues en utilisant le moteur de vue configuré dans Express. Elle prend un fichier modèle, le remplit avec les données fournies, et génère le HTML final qui est ensuite envoyé au client.
+//  Middleware en Express.js sont une composante essentielle dans les frameworks web comme Express.js. Ils représentent des fonctions qui ont accès à l'objet de requête (req), à l'objet de réponse (res), et à la fonction next dans le cycle de traitement des requêtes
+// Morgan est un middleware de journalisation HTTP pour les applications Node.js. Il est souvent utilisé avec Express.js pour enregistrer les détails des requêtes HTTP reçues par le serveur, comme la méthode de la requête (GET, POST, etc.), l'URL, le statut de la réponse, le temps de réponse, et plus encore. Morgan est particulièrement utile pour le débogage et la surveillance de l'application, car il permet de suivre et d'analyser le trafic HTTP
+// Morgan supporte plusieurs formats de sortie prédéfinis :
+
+// combined : Un format de log complet combinant les informations de la méthode, de l'URL, du statut, etc. C'est un format standard pour les journaux de serveurs.
+// common : Un format de log commun sans les détails de référence et d'agent utilisateur.
+// dev : Un format de log concis avec des couleurs, utile pour le développement.
+// short : Un format court de log.
+// tiny : Un format minimal de log.
